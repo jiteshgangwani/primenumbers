@@ -6,7 +6,7 @@
 	<groupId>com.jit.springboot</groupId>
 	<artifactId>primenumber-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>primenumber-app</name>
 	<description>PrimeNumber rest project for Spring Boot</description>
