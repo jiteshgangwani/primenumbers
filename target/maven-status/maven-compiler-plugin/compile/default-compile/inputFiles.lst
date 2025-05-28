@@ -1,0 +1,7 @@
+/app/src/main/java/com/jit/springboot/demo/service/PrimeNumberSoeServiceImpl.java
+/app/src/main/java/com/jit/springboot/demo/model/PrimeNumberObject.java
+/app/src/main/java/com/jit/springboot/demo/PrimeNumberApplication.java
+/app/src/main/java/com/jit/springboot/demo/config/SwaggerConfig.java
+/app/src/main/java/com/jit/springboot/demo/resource/PrimeNumberController.java
+/app/src/main/java/com/jit/springboot/demo/service/PrimeNumberServiceImpl.java
+/app/src/main/java/com/jit/springboot/demo/service/PrimeNumberService.java

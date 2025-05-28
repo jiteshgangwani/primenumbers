@@ -1,0 +1,7 @@
+com/jit/springboot/demo/service/PrimeNumberSoeServiceImpl.class
+com/jit/springboot/demo/config/SwaggerConfig.class
+com/jit/springboot/demo/model/PrimeNumberObject.class
+com/jit/springboot/demo/PrimeNumberApplication.class
+com/jit/springboot/demo/resource/PrimeNumberController.class
+com/jit/springboot/demo/service/PrimeNumberService.class
+com/jit/springboot/demo/service/PrimeNumberServiceImpl.class

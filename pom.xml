@@ -46,6 +46,37 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<!-- Keep existing exclusion for JUnit 4 if we want to avoid it entirely,
+			     or remove if we want Surefire to potentially run both via different providers/patterns.
+			     For this task, focusing on new JUnit 5 tests, so keeping it excluded is safer. -->
+			<exclusions>
+				<exclusion>
+					<groupId>junit</groupId>
+					<artifactId>junit</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- JUnit 5 Jupiter API and Engine -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
+			<!-- Version managed by Spring Boot parent -->
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<scope>test</scope>
+			<!-- Version managed by Spring Boot parent -->
+		</dependency>
+
+		<!-- Mockito Jupiter Extension -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>3.12.4</version> <!-- Using a Mockito 3.x version for better JUnit 5 support -->
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -54,6 +85,30 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<!-- Version is managed by Spring Boot parent (2.21.0) -->
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-surefire-provider</artifactId>
+						<version>1.2.0</version> <!-- Align with Surefire 2.21.0 compatibility -->
+					</dependency>
+				</dependencies>
+				<configuration>
+					<includes>
+						<include>**/*JUnit5Test.java</include>
+					</includes>
+					<excludes>
+						<!-- Exclude all other patterns to be safe, ensuring only new JUnit5 tests run -->
+						<exclude>**/Test*.java</exclude>
+						<exclude>**/*Test.java</exclude>
+						<exclude>**/*Tests.java</exclude>
+						<exclude>**/*TestCase.java</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

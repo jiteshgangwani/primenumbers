@@ -1,0 +1,7 @@
+/app/src/test/java/com/jit/springboot/demo/integration/PrimeNumberIntegrationTest.java
+/app/src/test/java/com/jit/springboot/demo/service/PrimeNumberServiceImplTest.java
+/app/src/test/java/com/jit/springboot/demo/service/PrimeNumberServiceTest.java
+/app/src/test/java/com/jit/springboot/demo/PrimeNumberApplicationTests.java
+/app/src/test/java/com/jit/springboot/demo/resource/PrimeNumberControllerTest.java
+/app/src/test/java/com/jit/springboot/demo/service/PrimeNumberServiceSoeTest.java
+/app/src/test/java/com/jit/springboot/demo/service/PrimeNumberSoeServiceImplTest.java

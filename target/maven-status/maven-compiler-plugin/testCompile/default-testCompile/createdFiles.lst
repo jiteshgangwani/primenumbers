@@ -1,0 +1,7 @@
+com/jit/springboot/demo/resource/PrimeNumberControllerTest.class
+com/jit/springboot/demo/service/PrimeNumberServiceTest.class
+com/jit/springboot/demo/integration/PrimeNumberIntegrationTest.class
+com/jit/springboot/demo/service/PrimeNumberSoeServiceImplTest.class
+com/jit/springboot/demo/service/PrimeNumberServiceImplTest.class
+com/jit/springboot/demo/PrimeNumberApplicationTests.class
+com/jit/springboot/demo/service/PrimeNumberServiceSoeTest.class

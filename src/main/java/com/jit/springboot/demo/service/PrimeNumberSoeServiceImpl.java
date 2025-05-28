@@ -19,7 +19,11 @@ public class PrimeNumberSoeServiceImpl  implements PrimeNumberService{
 
     @Override
     public List<Integer> getPrimeNumberList(int initials) {
-
+        if (initials < 2) {
+            // Optionally, add a log message for invalid input here, e.g.:
+            // logger.warn("Input for Sieve of Eratosthenes was less than 2: " + initials);
+            return new LinkedList<>();
+        }
         logger.info(("checking prime number soe "+ initials));
 
         boolean prime[] = new boolean[initials + 1];
