@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,25 +33,31 @@ public class PrimeNumberController {
 
 
     @GetMapping("/prime/{initials}")
-    public PrimeNumberObject getPrimeNumbers(@PathVariable("initials") @Max(Integer.MAX_VALUE) int initials) {
+    public ResponseEntity<?> getPrimeNumbers(@PathVariable("initials") @Max(Integer.MAX_VALUE) int initials) {
+        if (initials < 2) {
+            return ResponseEntity.badRequest().body("Input number must be greater than or equal to 2.");
+        }
         PrimeNumberObject primeNumberObject = new PrimeNumberObject();
         primeNumberObject.setInitial(initials);
         Instant start = Instant.now();
         primeNumberObject.setPrimes(primeNumberService.getPrimeNumberList(initials));
         Instant end = Instant.now();
         logTiming(start, end, "Default", initials);
-        return primeNumberObject;
+        return ResponseEntity.ok(primeNumberObject);
     }
 
     @GetMapping("/prime/{initials}/soe")
-    public PrimeNumberObject getPrimeNumbersSoe(@PathVariable("initials") @Max(Integer.MAX_VALUE) int initials) {
+    public ResponseEntity<?> getPrimeNumbersSoe(@PathVariable("initials") @Max(Integer.MAX_VALUE) int initials) {
+        if (initials < 2) {
+            return ResponseEntity.badRequest().body("Input number must be greater than or equal to 2.");
+        }
         PrimeNumberObject primeNumberObject = new PrimeNumberObject();
         primeNumberObject.setInitial(initials);
         Instant start = Instant.now();
         primeNumberObject.setPrimes(primeNumberSoeService.getPrimeNumberList(initials));
         Instant end = Instant.now();
         logTiming(start, end, "SOE", initials);
-        return primeNumberObject;
+        return ResponseEntity.ok(primeNumberObject);
     }
 
     private void logTiming(Instant start, Instant end, String method, int initial) {

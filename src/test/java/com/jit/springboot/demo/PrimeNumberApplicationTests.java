@@ -1,11 +1,12 @@
 package com.jit.springboot.demo;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test; // JUnit 5 Test annotation
+import org.junit.jupiter.api.extension.ExtendWith; // JUnit 5 ExtendWith annotation
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext; // Import DirtiesContext
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension; // JUnit 5 SpringExtension
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -13,16 +14,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
 
+@ExtendWith(SpringExtension.class) // Replaced RunWith(SpringRunner.class)
+@SpringBootTest(classes = PrimeNumberApplication.class) // Explicitly set context
+@AutoConfigureMockMvc
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS) // Added DirtiesContext
 public class PrimeNumberApplicationTests {
 
 	@Autowired
 	private MockMvc mockMvc;
 
-	@Test
+	@Test // JUnit 5 Test annotation
 	public void  testPrimeNumberRequestResponse() throws Exception {
 		this.mockMvc.perform(get("/rest/prime/20"))
 				.andDo(print())
@@ -31,7 +33,7 @@ public class PrimeNumberApplicationTests {
 	}
 
 
-	@Test
+	@Test // JUnit 5 Test annotation
 	public void  testPrimeNumberSoeRequestResponse() throws Exception {
 		this.mockMvc.perform(get("/rest/prime/20/soe"))
 				.andDo(print())
